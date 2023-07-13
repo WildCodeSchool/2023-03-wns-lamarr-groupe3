@@ -1,0 +1,150 @@
+@use './mixin' as m;
+@use './variable' as v;
+@use './placeholder';
+.section {
+    height: 100vh;
+    @include m.flexLayout(center, center, column);
+    background: url("../../public/bg-wave.svg"), url('../../public/Illu_man.svg');
+    background-position: 100% 320%,left 17% bottom 20%;
+    background-size: auto, 11%;
+
+
+
+    h2 {
+            font-family: v.$comicNeueFont;
+            font-size: 48px;
+            font-weight: 700;
+            margin-top: -1.5em;
+    }
+
+    .h2_login {
+        color: var(--cream, #F5F6E2);
+    }
+
+    .h2_register {
+        color: var(--dark-purple, #090F43);
+    }
+        
+       
+    
+        
+// FORM 
+form {
+    border-radius: 20px;
+    border: 3px solid #FFE600;
+    background: #F3DF24;
+    @include m.flexLayout(space-around, center, column);
+    // width: 40%;
+    width: 668px;
+    height: 556px;
+    padding: 2em;
+
+    h3 {
+        @include m.flexLayout(start, start, column);
+    }
+
+    p {
+        margin: 0;
+        font-family: v.$poppinsFont;
+        color: red;
+        font-weight: 500;
+        text-align: center;
+    }
+  
+    div {
+        position: relative;
+        width: 100%;
+        display: flex;
+        @include m.flexLayout(center, center); 
+    }
+    input[type=text],
+    input[type=email],
+    input[type=password],
+    select {
+        @extend %inputForm;
+        @include m.buttonSize(80%, auto);
+        padding: 1em;
+        text-indent: 40px;
+        border: none;
+    }
+    svg {
+        position: absolute;
+        left: 65px;
+        z-index: 2;
+    }
+  
+
+    input::placeholder, option {
+        color: var(--dark-purple, #090F43);
+        font-size: 15px;
+        font-family: 'Comic Neue', cursive;
+        font-weight: 700;
+        margin-left: 2em;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    input[type=submit] {
+        border-radius: 10px;
+        background: var(--cream, #F5F6E2);
+        color: var(--dark-purple, #090F43);
+        font-size: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 0.5em 1em;
+        border: none;
+    }
+
+    span {
+        color: #090F43;
+        text-align: center;
+        font-size: 16px;
+        font-family: v.$poppinsFont;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    div {
+        display: flex;
+        gap: 1em;
+
+        img {
+            width: 100px;
+            height: auto;
+        }
+    }
+
+    a {
+        color: #090F43;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    // Contribution form 
+
+    select {
+        @include m.buttonSize(85%, auto);
+        
+        option {
+           border: 20px solid #090F43;
+        }
+       
+    }
+}
+}
+.section_login {
+    @extend .section;
+    background: url("../../public/bg-wave_login.svg"), url('../../public/Illu_man_login.svg');
+    background-position: 100% -400%,left 17% top 20%;
+    background-repeat: no-repeat, no-repeat;
+}
+
+.section_register {
+    @extend .section;
+    background: url("../../public/bg-wave.svg"), url('../../public/Illu_man.svg');
+    background-position: 100% 320%, left 17% bottom 20%;
+    background-repeat: no-repeat, no-repeat;
+}
+

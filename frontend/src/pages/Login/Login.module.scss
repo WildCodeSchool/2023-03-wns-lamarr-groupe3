@@ -1,0 +1,88 @@
+@import '../../style/mixin.scss';
+
+section  {
+    height: 100vh;
+    @include flexLayout(center, center);
+}
+
+// FORM 
+form {
+    border-radius: 20px;
+    border: 3px solid #FFE600;
+    background: #F3DF24;
+    @include flexLayout(center, center);
+    width: 40%;
+    gap: 1em;
+
+    .containerInput {
+        position: relative;
+        width: 70%;
+        display: flex;
+        @include flexLayout(center,center);
+    }
+
+    .containerIcon {
+        position: absolute;
+        @include flexLayout( center, center);
+        left: -30px;
+        height: 100%;
+        z-index: 2;
+    }
+
+    input[type=text],input[type=email],input[type=password] {
+        border-radius: 10px;
+        background: var(--cream, #F5F6E2);
+        padding: 1em 3em; 
+        width: 100%;
+        position: relative;
+        border: none;
+    }
+    input::placeholder {
+        color: var(--dark-purple, #090F43);
+        font-size: 15px;
+        font-family: 'Comic Neue', cursive;
+        font-weight: 700;
+        margin-left: 2em;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    input[type=submit] {
+        border-radius: 10px;
+        background: var(--cream, #F5F6E2);
+        color: var(--dark-purple, #090F43);
+        font-size: 20px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 0.5em 1em;
+        border: none;
+    }
+
+    span {
+        color: #090F43;
+        text-align: center;
+        font-size: 16px;
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+    }
+
+    .container--DownloadApp {
+        display: flex;
+        gap: 1em;
+
+        * {
+            width: 100px;
+            height: auto;
+        }
+    }
+
+    a {
+        color: #090F43;
+        font-size: 16px;
+        font-weight: 500;
+    }
+}

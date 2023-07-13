@@ -1,31 +1,42 @@
 import "./App.scss";
-import Header from "./components/common/header/Header";
-import Footer from "./components/common/footer/Footer";
-import InteractiveMap from "./components/interactiveMap/InteractiveMap";
-// import About from "./pages/About/About";
-import { useEffect, useState } from "react";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Outlet,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
+import HomePage from "./pages/HomePage/HomePage";
+import { UserProvider } from "./contexts/UserContext";
+import * as React from "react";
+import Contribution from "./pages/Contribution/Contribution";
+
+const Root = () => {
+  return (
+    <UserProvider>
+      <Outlet /> {/* Outlet is where the child routes will be rendered */}
+    </UserProvider>
+  );
+};
 
 function App() {
-  // get window size to display header
-  const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
-
-  function updateDimension() {
-    setWindowSize(window.innerWidth);
-  }
-
-  useEffect(() => {
-    window.addEventListener("resize", updateDimension);
-  }, [windowSize]);
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Root />}>
+        <Route index element={<HomePage />} />
+        <Route path="/login" index element={<Login />} />
+        <Route path="/register" index element={<Register />} />
+        <Route path="/contribution" index element={<Contribution />} />
+      </Route>
+    )
+  );
 
   return (
-    <div className="App">
-      <Header size={windowSize > 768 ? "desktop" : "mobile"} />
-      <div>
-        <InteractiveMap />
-      </div>
-      <Footer />
-      {/* <About /> */}
-    </div>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
   );
 }
 

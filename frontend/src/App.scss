@@ -18,3 +18,50 @@ h1 {
   font-weight: 700;
   color: v.$white_color;
 }
+body {
+    margin: 0;
+}
+
+
+// TYPOGRAPHIE
+h1,
+h3,
+a {
+    font-family: 'Poppins', sans-serif;
+}
+
+h2 {
+    font-family: 'Comic Neue', cursive;
+}
+// FONT WEIGHT
+
+h1, h3 {
+    font-weight: 700;
+}
+
+// COLORS
+h2, h3 {
+    color: v.$primary_color;
+}
+
+h1 {
+    font-size: 40px;
+    color: v.$white_color; 
+}
+
+h2 {
+    font-size: 36px;
+    color: v.$white_color;
+    text-align: center;
+}
+
+h3 {
+    font-size: 32px;
+}
+
+
+
+// input {
+//     @extend %inputForm;
+// }
+
