@@ -11,7 +11,7 @@ import PasswordModal from "../../components/common/modals/PasswordModal";
 import Caroussel from "../../components/common/Caroussel/Caroussel";
 import { handleFormErrors } from "../../utils/handleFormError";
 import useWindowDimensions from "../../utils/hooks/useWindowDimensions";
-import { Link } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 export interface IDisableInputs {
   city: boolean;
   email: boolean;
@@ -34,9 +34,10 @@ export interface IError {
 
 const Profile = () => {
   const windowSize = useWindowDimensions();
+  const navigate = useNavigate();
 
   // get profile
-  const { profile } = useContext(UsersContext);
+  const { profile, isAuthenticated } = useContext(UsersContext);
   const [displayEditImg, setDisplayEditImg] = useState<boolean>(false);
   const [displayModals, setDisplayModals] = useState<IDisplayModals>({
     validation: false,
@@ -66,7 +67,8 @@ const Profile = () => {
 
   useEffect(() => {
     if (profile !== null) setUserInfo(profile);
-  }, [profile]);
+    if (!isAuthenticated) navigate("/");
+  }, [profile, isAuthenticated]);
 
   return (
     <div className={style.profilePage}>

@@ -13,9 +13,11 @@
         width: 100%;
     }
 
-    .likeContainer {
+    .likeButton {
         width: 28px;
         height: 28px;
+        border: none;
+        cursor: pointer;
         border-radius: 100%;
         background-color: #fff;
         position: absolute;

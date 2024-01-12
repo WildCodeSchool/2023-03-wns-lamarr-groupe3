@@ -8,7 +8,7 @@ interface Props {
    openOnClick: (id: string) => void;
    modaleOpen: string | null;
    onClose: () => void;
-   handleFavourite: (id: string | null) => void;
+   handleFavourite: (id: string | null, cardType: CardType) => void;
    isLiked: (id: string | null) => boolean;
 }
 

@@ -44,7 +44,7 @@ const Login = () => {
         });
       }
 
-      if (response.status !== 200) {
+      if (response.status !== 201) {
         Object.keys(data.errors).forEach((error) => {
           setError(error as keyof FormProps, {
             message: data.errors[error],

@@ -103,6 +103,7 @@ export const CategoryController: IController = {
       if (image !== null && typeof image !== "object") {
         res.status(400).send({
           error: `Field image must contains a file`,
+          file: typeof req.file,
         });
         if (req.file !== undefined)
           await unlink(`./public/category/${req.file?.filename}`);

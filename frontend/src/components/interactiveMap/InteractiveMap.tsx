@@ -69,7 +69,6 @@ const InteractiveMap = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://tile.jawg.io/78a4b677-e817-42a6-8184-16a7c7017384/{z}/{x}/{y}{r}.png?access-token=VsqNhlNeeh2fYcI97JN1VuaKPpHNNeQSYYllqIf29xrB8in1XrrCycJkjpz6aJZX"
         />
-        {/* Barre de recherche */}
         {<SearchBar />}
 
         <MarkerClusterGroup iconCreateFunction={createClusterCustomIcon}>

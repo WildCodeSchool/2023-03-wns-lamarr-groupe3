@@ -1,4 +1,4 @@
-import { Poi } from "../../utils/types";
+import { CardType, Poi } from "../../utils/types";
 import styles from "./modalePOI.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 interface Props {
   poi: Poi;
   onClose: () => void;
-  handleFavourite: (id: string | null) => void;
+  handleFavourite: (id: string | null, cardType: CardType) => void;
   isLiked: (id: string | null) => boolean;
 }
 
@@ -37,7 +37,10 @@ const ModalePOI = ({ poi, onClose, handleFavourite, isLiked }: Props) => {
         {isAuthenticated() ? (
           <div className={styles.icons}>
             <FaShareAlt className={styles.socialIcon} />
-            <div onClick={() => handleFavourite(id)}>
+            <div
+              onClick={() => handleFavourite(id, CardType.POI)}
+              data-testid="like-button"
+            >
               {isLiked(id) ? (
                 <IoIosHeart
                   className={styles.filledHeart}
