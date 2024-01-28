@@ -4,6 +4,7 @@ import styles from "./BackOfficeLayout.module.scss";
 import { UsersContext } from "../../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import { Role } from "../../../utils/types";
+import Layout from "../../../components/layout/Layout";
 
 export default function BackOfficeLayout({ children }: PropsWithChildren) {
 	const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
@@ -42,15 +43,17 @@ export default function BackOfficeLayout({ children }: PropsWithChildren) {
 	}, [isAuthenticated, loaded, redirectToLogin]);
 	return (
 		<>
-			<div className={styles.layoutBackOffice}>
-				<section className={styles.flexAsideMenu}>
-					<AsideMenu />
-				</section>
-				<section className={styles.flexContent}>
-					<div className={styles.backOfficeContent}>{children}</div>
-					<div className={styles.footerWave}></div>
-				</section>
-			</div>
+			<Layout>
+				<div className={styles.layoutBackOffice}>
+					<section className={styles.flexAsideMenu}>
+						<AsideMenu />
+					</section>
+					<section className={styles.flexContent}>
+						<div className={styles.backOfficeContent}>{children}</div>
+						<div className={styles.footerWave}></div>
+					</section>
+				</div>
+			</Layout>
 		</>
 	);
 }

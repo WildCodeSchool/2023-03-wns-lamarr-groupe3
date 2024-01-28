@@ -5,25 +5,28 @@ import Footer from "../common/footer/Footer";
 import useWindowDimensions from "../../utils/hooks/useWindowDimensions";
 
 const Layout = ({ children }: PropsWithChildren) => {
-  const windowSize = useWindowDimensions();
-  let location = useLocation();
-  const isPageWithoutHeaderAndFooter =
-    (location.pathname.includes("register") && windowSize > 768) ||
-    (location.pathname.includes("login") && windowSize > 768) ||
-    (location.pathname.includes("contribution") && windowSize > 768);
+	const windowSize = useWindowDimensions();
+	let location = useLocation();
+	const isPageWithoutHeaderAndFooter =
+		(location.pathname.includes("register") && windowSize > 768) ||
+		(location.pathname.includes("login") && windowSize > 768) ||
+		(location.pathname.includes("contribution") && windowSize > 768);
 
-  return (
-    <>
-      {isPageWithoutHeaderAndFooter ? null : (
-        <Header size={windowSize > 768 ? "desktop" : "mobile"} />
-      )}
+	const isDashboardPage = location.pathname.includes("dashboard");
 
-      {children}
-      {isPageWithoutHeaderAndFooter ? null : windowSize > 768 ? (
-        <Footer />
-      ) : null}
-    </>
-  );
+	return (
+		<>
+			{!isPageWithoutHeaderAndFooter && (
+				<Header size={windowSize > 768 ? "desktop" : "mobile"} />
+			)}
+
+			{children}
+
+			{!isPageWithoutHeaderAndFooter &&
+				!isDashboardPage &&
+				windowSize > 768 && <Footer />}
+		</>
+	);
 };
 
 export default Layout;

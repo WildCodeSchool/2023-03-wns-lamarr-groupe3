@@ -5,6 +5,7 @@ import Caroussel from "../../components/common/Caroussel/Caroussel";
 import styles from "./poiListView.module.scss";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { HashLink } from "react-router-hash-link";
+import Layout from "../../components/layout/Layout";
 
 const PoiListView = () => {
 	const { cityId } = useParams();
@@ -69,44 +70,48 @@ const PoiListView = () => {
 	}, []);
 
 	return (
-		<section className={styles.container}>
-			<div>
-				<div className={styles.header}>
-					<HashLink smooth to="/#cities">
-						<button className={styles.previousButton}>
-							<FaArrowLeftLong className={styles.arrow} /> Retour
-						</button>
-					</HashLink>
+		<>
+			<Layout>
+				<section className={styles.container}>
+					<div>
+						<div className={styles.header}>
+							<HashLink smooth to="/#cities">
+								<button className={styles.previousButton}>
+									<FaArrowLeftLong className={styles.arrow} /> Retour
+								</button>
+							</HashLink>
 
-					<h1>{currentCity?.name}</h1>
-				</div>
+							<h1>{currentCity?.name}</h1>
+						</div>
 
-				{categories && (
-					<div className={styles.categories}>
-						<Caroussel
-							title="Catégories"
-							data={categories}
-							cardType={CardType.CATEGORY}
-							onClickCategory={getPoiByCityAndCategory}
-							currentCity={currentCity}
-						/>
+						{categories && (
+							<div className={styles.categories}>
+								<Caroussel
+									title="Catégories"
+									data={categories}
+									cardType={CardType.CATEGORY}
+									onClickCategory={getPoiByCityAndCategory}
+									currentCity={currentCity}
+								/>
+							</div>
+						)}
+						{searchedPoi && currentCity && (
+							<div className={styles.poiList}>
+								<Caroussel
+									title={`${searchedPoi.length} ${
+										searchedPoi.length > 1
+											? "points d'intérêt trouvés"
+											: "point d'intérêt trouvé"
+									} `}
+									data={searchedPoi}
+									cardType={CardType.POI}
+								/>
+							</div>
+						)}
 					</div>
-				)}
-				{searchedPoi && currentCity && (
-					<div className={styles.poiList}>
-						<Caroussel
-							title={`${searchedPoi.length} ${
-								searchedPoi.length > 1
-									? "points d'intérêt trouvés"
-									: "point d'intérêt trouvé"
-							} `}
-							data={searchedPoi}
-							cardType={CardType.POI}
-						/>
-					</div>
-				)}
-			</div>
-		</section>
+				</section>
+			</Layout>
+		</>
 	);
 };
 
