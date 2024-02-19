@@ -313,8 +313,11 @@ export const addCity = async (body: any): Promise<void> => {
 			credentials: "include",
 			body: body,
 		});
+		console.log("addCity response", response);
 
 		const data = await response.json();
+		console.log("addCity data", data);
+
 		return data;
 	} catch (error) {
 		console.log("add error", error);

@@ -7,8 +7,16 @@ type interfaceButtonProps = {
 	onClick: () => void;
 	typeButton: string;
 	text?: string;
+	dataTestId?: string;
+	iconType?: string;
 };
-const Button = ({ icon, onClick, typeButton, text }: interfaceButtonProps) => {
+const Button = ({
+	icon,
+	onClick,
+	typeButton,
+	text,
+	dataTestId,
+}: interfaceButtonProps) => {
 	return (
 		<>
 			<button
@@ -16,6 +24,9 @@ const Button = ({ icon, onClick, typeButton, text }: interfaceButtonProps) => {
 					typeButton === "icon" ? styles.buttonIcon : styles.buttonText
 				}
 				onClick={onClick}
+				// data-testid={typeButton === "icon" ? "buttonIcon" : "buttonText"}
+				// data-testid={`${typeButton}-${dataTestId}`}
+				data-testid={dataTestId}
 			>
 				{typeButton === "icon" && <FontAwesomeIcon icon={icon as IconProp} />}
 				{typeButton === "text" && <p>{text}</p>}

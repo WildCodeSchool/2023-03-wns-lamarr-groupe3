@@ -93,7 +93,7 @@ const ModalAdmin = ({
 					<button onClick={onClose} className={styles.closeButton}>
 						<FontAwesomeIcon icon={faXmark}></FontAwesomeIcon>
 					</button>
-					<form onSubmit={handleSubmit}>
+					<form onSubmit={handleSubmit} data-testid="modal-admin">
 						<div className={styles.simpleInput}>
 							<label htmlFor="Nom ville">Nom ville</label>
 							<input

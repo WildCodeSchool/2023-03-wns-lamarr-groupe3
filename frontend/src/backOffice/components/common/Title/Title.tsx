@@ -10,7 +10,11 @@ const Title = ({ name, icon }: TitleProps) => {
 	return (
 		<>
 			<div className={styles.titleContainer}>
-				<FontAwesomeIcon icon={icon} className={styles.iconSpaces} />
+				<FontAwesomeIcon
+					icon={icon}
+					className={styles.iconSpaces}
+					data-testid="icon-title"
+				/>
 				<h3>{name}</h3>
 			</div>
 		</>
