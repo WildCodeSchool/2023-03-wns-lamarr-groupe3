@@ -24,50 +24,28 @@ describe("when the user click on the added button", () => {
 	});
 });
 
-// describe("when the user click on the edited button", () => {
-// 	it("should be open a modal", async () => {
-// 		render(
-// 			<BrowserRouter>
-// 				<UserProvider>
-// 					<Cities></Cities>
-// 				</UserProvider>
-// 			</BrowserRouter>
-// 		);
-// 		const buttonToModifiedCity = screen.getByTestId("1-modify-button");
-// 		expect(buttonToModifiedCity).toBeInTheDocument();
+describe("when the user click on the edited button", () => {
+	it("should be open a modal", async () => {
+		render(
+			<BrowserRouter>
+				<UserProvider>
+					<Cities></Cities>
+				</UserProvider>
+			</BrowserRouter>
+		);
+		setTimeout(async () => {
+			const buttonToModifiedCity = screen.getByTestId("1-modify-button");
+			expect(buttonToModifiedCity).toBeInTheDocument();
 
-// 		fireEvent.click(buttonToModifiedCity);
-// 		await waitFor(() => {
-// 			const modalAdmin = screen.getByTestId("modal-admin");
-// 			expect(modalAdmin).toBeInTheDocument();
-// 		});
-// 		// await waitFor(() => buttonToModifiedCity, { timeout: 5000 });
-// 	});
-// });
-
-// describe("button with icon", () => {
-// 	it("should return a button with icon", () => {
-// 		const onClick = jest.fn();
-// 		const mockedIcon = faPen;
-// 		render(
-// 			<Button icon={mockedIcon} onClick={onClick} typeButton={"icon"}></Button>
-// 		);
-// 		const buttonIcon = screen.getByTestId("buttonIcon");
-// 		expect(buttonIcon).toBeInTheDocument();
-// 		expect(onClick).toHaveBeenCalledTimes(0);
-// 	});
-// });
-
-// describe("button with text", () => {
-// 	it("should return a button with text", () => {
-// 		const onClick = jest.fn();
-
-// 		render(
-// 			<Button onClick={onClick} typeButton={"text"} dataTestId={"add"}></Button>
-// 		);
-
-// 		const buttonText = screen.getByTestId("add");
-// 		expect(buttonText).toBeInTheDocument();
-// 		expect(onClick).toHaveBeenCalledTimes(0);
-// 	});
-// });
+			fireEvent.click(buttonToModifiedCity);
+			await waitFor(() => {
+				const modalAdmin = screen.getByTestId("modal-admin");
+				expect(modalAdmin).toBeInTheDocument();
+			});
+		}, 1000);
+	});
+});
+// seTimeout solution non optimum
+// isoler le test du back et mocker les données
+// mocker le fecth getCities et je retourne une liste de ville => isoler les parties à tester,
+// elles ne dependent plus de mon environnement
