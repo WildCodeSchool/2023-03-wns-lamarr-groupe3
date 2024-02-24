@@ -285,7 +285,7 @@ export const createPoi = async (body: any) => {
 // UPDATE CITY
 export const updateCity = async (body: any, id: string): Promise<void> => {
 	try {
-		const response = await fetch(`http://localhost:5000/api/cities/${id}`, {
+		const response = await fetch(`${process.env.REACT_APP_PUBLIC_BACKEND_URL}/api/cities/${id}`, {
 			method: "PUT",
 			headers: {
 				Accept: "application/json",
